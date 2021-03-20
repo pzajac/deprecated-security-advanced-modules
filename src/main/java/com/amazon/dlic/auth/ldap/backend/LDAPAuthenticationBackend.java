@@ -271,7 +271,8 @@ public class LDAPAuthenticationBackend implements AuthenticationBackend {
             SearchFilter f = new SearchFilter();
             f.setFilter(baseSettings.get(ConfigConstants.LDAP_AUTHCZ_SEARCH, DEFAULT_USERSEARCH_PATTERN));
             f.setParameter(ZERO_PLACEHOLDER, username);
-
+            log.debug("search filter: " + f);
+            log.debug("settings: " + baseSettings);
             List<LdapEntry> foundEntries = LdapHelper.search(ldapConnection,
                     baseSettings.get(ConfigConstants.LDAP_AUTHCZ_BASE, DEFAULT_USERBASE),
                     f,
